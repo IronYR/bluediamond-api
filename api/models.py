@@ -10,3 +10,14 @@ class BlogPost(models.Model):
 
     def __str__(self):
         return self.title
+
+class ContactSubmission(models.Model):
+    company_name = models.CharField(max_length=255)
+    sender_name = models.CharField(max_length=255)
+    position = models.CharField(max_length=255)
+    company_email = models.EmailField()
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.sender_name} - {self.company_name}"
