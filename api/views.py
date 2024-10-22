@@ -5,7 +5,6 @@ from .models import BlogPost, ContactSubmission
 from .serializers import BlogPostListSerializer, BlogPostDetailSerializer, ContactSubmissionSerializer
 from django.core.mail import send_mail
 from django.conf import settings
-
 # Endpoint to get the list of blog posts (title, description, image)
 class BlogPostListView(generics.ListAPIView):
     queryset = BlogPost.objects.all()
@@ -21,7 +20,6 @@ class BlogPostDetailView(generics.RetrieveAPIView):
 class ContactSubmissionView(generics.CreateAPIView):
     queryset = ContactSubmission.objects.all()
     serializer_class = ContactSubmissionSerializer
-
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -47,4 +45,4 @@ class ContactSubmissionView(generics.CreateAPIView):
         from_email = settings.EMAIL_HOST_USER
         recipient_list = settings.CONTACT_FORM_RECIPIENTS
 
-        send_mail(subject, message, from_email, recipient_list, fail_silently=False)
+        send_mail(subject, message, from_email, recipient_list, fail_silently=True)
