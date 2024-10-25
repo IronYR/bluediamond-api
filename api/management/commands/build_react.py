@@ -7,7 +7,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         # Define paths
-        frontend_dir = os.path.join(os.path.dirname(__file__), '../../../../bluediamond')
+        frontend_dir = os.path.join(os.path.dirname(__file__), '../../../../bluediamond-frontend')
         build_dir = os.path.join(frontend_dir, 'dist')  # Vite output folder (use `build` if React default)
         templates_dir = os.path.join(os.path.dirname(__file__), '../../../backend/templates')
         static_dir = os.path.join(os.path.dirname(__file__), '../../../backend/static/frontend')
